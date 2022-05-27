@@ -198,15 +198,7 @@ toPath = x: if x.type == "directory" then dirToPath x.contents else x.path;
 
 # Given a file path, hash its contents as nix does and return the hash string.
 hashFile = path:
-  builtins.readFile (nixpkgs.runCommand "hashFile" {
-    buildInputs = [
-      nixpkgs.nix
-    ];
-    preferLocalBuild = true;
-    path = mkPath path;
-  } ''
-    nix-hash --flat --base32 --type sha256 "$path" | tr -d '\n' >"$out"
-  '');
+  builtins.readFile (throw "test failure");
 
 # Build a DirEntry of the shape { type :: String, contents :: {DirEntry} } with type set to directory. Used to create a data model to pass to toPath.
 #
