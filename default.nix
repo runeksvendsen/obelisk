@@ -348,6 +348,9 @@ in rec {
                     ${if self.userSettings.ios == null then null else "ghcIosAarch64"} =
                       lib.filter (x: lib.hasAttr x self.combinedPackages) self.shells-ghcSavedSplices;
 
+                    ${if self.userSettings.ios == null then null else "ghcIosSimulator64"} =
+                      lib.filter (x: lib.hasAttr x self.combinedPackages) self.shells-ghcSavedSplices;
+
                     ghc = lib.filter (x: lib.hasAttr x self.combinedPackages) self.shells-ghc;
                     ghcjs = lib.filter (x: lib.hasAttr x self.combinedPackages) self.shells-ghcjs;
                   };
